@@ -8,7 +8,7 @@ import java.time.LocalTime;
 
 @Data
 public class RunDTO {
-    private Long courseId;
+    private Long runId;
     private String title;
     private String description;
     private LocalDate date;

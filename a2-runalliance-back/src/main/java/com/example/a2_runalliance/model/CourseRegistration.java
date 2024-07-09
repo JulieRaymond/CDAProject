@@ -7,14 +7,14 @@ import lombok.Data;
 @Entity
 @Table(name = "Course_registration")
 public class CourseRegistration {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "registration_id")
     private Long registrationId;
 
     @ManyToOne
-    @JoinColumn(name = "course_id", nullable = false)
+    @JoinColumn(name = "run_id", nullable = false)
     private Run run;
 
     @ManyToOne

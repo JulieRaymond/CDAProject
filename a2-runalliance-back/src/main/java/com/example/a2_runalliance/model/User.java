@@ -33,6 +33,6 @@ public class User {
     @Column(name = "profile_visibility", nullable = false)
     private ProfileVisibility profileVisibility;
 
-    @OneToMany(mappedBy = "utilisateur")
+    @OneToMany(mappedBy = "user")
     private List<CourseRegistration> inscriptions = new ArrayList<>();
 }

@@ -12,10 +12,11 @@ import java.util.List;
 @Entity
 @Table(name = "Run")
 public class Run {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "course_id")
-    private Long courseId;
+    @Column(name = "run_id")
+    private Long runId;
 
     @Column(nullable = false)
     private String title;
@@ -42,6 +43,6 @@ public class Run {
     @Column(nullable = false)
     private Integer durationMinutes;
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "run")
     private List<CourseRegistration> inscriptions = new ArrayList<>();
 }

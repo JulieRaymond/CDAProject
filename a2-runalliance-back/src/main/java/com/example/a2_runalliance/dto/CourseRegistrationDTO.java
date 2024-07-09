@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class CourseRegistrationDTO {
     private Long registrationId;
-    private Long courseId;
+    private Long runId;
     private Long userId;
 }
