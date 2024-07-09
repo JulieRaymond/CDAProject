@@ -1,29 +1,28 @@
 package com.example.a2_runalliance.controller;
 
-import com.example.a2_runalliance.model.Run;
-import com.example.a2_runalliance.repository.RunRepository;
+import com.example.a2_runalliance.dto.RunDTO;
+import com.example.a2_runalliance.service.RunService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/runs")
 public class RunController {
 
-    private final RunRepository runRepository;
+    private final RunService runService;
 
     @Autowired
-    public RunController(RunRepository runRepository) {
-        this.runRepository = runRepository;
+    public RunController(RunService runService) {
+        this.runService = runService;
     }
 
     @GetMapping
-    public ResponseEntity<List<Run>> getAllRuns() {
-        List<Run> runs = runRepository.findAll();
+    public ResponseEntity<List<RunDTO>> getAllRuns() {
+        List<RunDTO> runs = runService.getAllRuns();
         if (runs.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
@@ -31,49 +30,32 @@ public class RunController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Run> getRunById(@PathVariable Long id) {
-        Optional<Run> optionalRun = runRepository.findById(id);
-        if (optionalRun.isEmpty()) {
+    public ResponseEntity<RunDTO> getRunById(@PathVariable Long id) {
+        RunDTO run = runService.getRunById(id);
+        if (run == null) {
             return ResponseEntity.notFound().build();
         }
-        Run run = optionalRun.get();
         return ResponseEntity.ok(run);
     }
 
     @PostMapping
-    public ResponseEntity<Run> createRun(@RequestBody Run run) {
-        Run savedRun = runRepository.save(run);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedRun);
+    public ResponseEntity<RunDTO> createRun(@RequestBody RunDTO runDTO) {
+        RunDTO createdRun = runService.createRun(runDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdRun);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Run> updateRun(@PathVariable Long id, @RequestBody Run runDetails) {
-        Optional<Run> optionalRun = runRepository.findById(id);
-        if (optionalRun.isEmpty()) {
+    public ResponseEntity<RunDTO> updateRun(@PathVariable Long id, @RequestBody RunDTO runDTO) {
+        RunDTO updatedRun = runService.updateRun(id, runDTO);
+        if (updatedRun == null) {
             return ResponseEntity.notFound().build();
         }
-        Run run = optionalRun.get();
-        run.setTitle(runDetails.getTitle());
-        run.setDescription(runDetails.getDescription());
-        run.setDate(runDetails.getDate());
-        run.setTime(runDetails.getTime());
-        run.setLocation(runDetails.getLocation());
-        run.setDifficultyLevel(runDetails.getDifficultyLevel());
-        run.setDistanceKm(runDetails.getDistanceKm());
-        run.setDurationMinutes(runDetails.getDurationMinutes());
-
-        Run updatedRun = runRepository.save(run);
         return ResponseEntity.ok(updatedRun);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteRun(@PathVariable Long id) {
-        Optional<Run> optionalRun = runRepository.findById(id);
-        if (optionalRun.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-        Run run = optionalRun.get();
-        runRepository.delete(run);
+        runService.deleteRun(id);
         return ResponseEntity.noContent().build();
     }
 }
