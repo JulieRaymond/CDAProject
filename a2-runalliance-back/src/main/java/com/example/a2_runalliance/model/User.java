@@ -3,6 +3,9 @@ package com.example.a2_runalliance.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "User")
@@ -29,4 +32,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(name = "profile_visibility", nullable = false)
     private ProfileVisibility profileVisibility;
+
+    @OneToMany(mappedBy = "utilisateur")
+    private List<CourseRegistration> inscriptions = new ArrayList<>();
 }

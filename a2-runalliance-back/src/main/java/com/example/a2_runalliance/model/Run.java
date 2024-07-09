@@ -5,6 +5,8 @@ import lombok.Data;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -34,9 +36,12 @@ public class Run {
     @Enumerated(EnumType.STRING)
     private DifficultyLevel difficultyLevel;
 
-    @Column(nullable = false, precision = 5, scale = 2)
+    @Column(nullable = false)
     private Double distanceKm;
 
     @Column(nullable = false)
     private Integer durationMinutes;
+
+    @OneToMany(mappedBy = "course")
+    private List<CourseRegistration> inscriptions = new ArrayList<>();
 }
