@@ -1,4 +1,4 @@
-@import "../../assets/variables";
+@import "../../../assets/styles/variables";
 
 .demo-inline-calendar-card {
   @include reponsive-calendar(100%, 70%, 33%);
