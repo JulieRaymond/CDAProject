@@ -1,0 +1,36 @@
+@import "../../assets/variables";
+
+.mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  > .nav-title {
+    flex: 1;
+    text-align: center;
+  }
+}
+
+.sidenav-container {
+  height: 100%;
+
+  > .sidenav {
+    width: 15rem;
+
+    .drawer-links-icons {
+      margin-right: 1rem;
+    }
+  }
+}
+
+.mat-toolbar-single-row {
+  justify-content: space-evenly;
+}
+
+.drawer-logo {
+  width: 2.5rem;
+}
+
+.mat-drawer-container {
+  z-index: 2;
+}

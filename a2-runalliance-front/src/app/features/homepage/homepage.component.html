@@ -1,0 +1,38 @@
+<!--homepage.component.html-->
+<div class="homepage-image-container">
+  <img [src]="homepagePathImage" alt="Group of runners for the homepage image" class="homepage-image">
+  <h1>{{ homepageTitle }}</h1>
+  <app-button class="sign-btn" label="Rejoignez-nous" color="primary"></app-button>
+  <div class="introduction-text">
+    <p>{{ introductionText }}</p>
+  </div>
+</div>
+
+<div class="concept-container">
+  <h2>{{ conceptTitle }}</h2>
+  <p>{{ conceptText }}</p>
+</div>
+
+<div class="values-container">
+  <h2>{{ valueTitle }}</h2>
+  <app-value-card
+    [title]="'Entraide !'"
+    [subtitle]="'Chacun se soutient et s’encourage pour donner le meilleur de soi et atteindre le but qu’il s’est fixé !'"
+    [imageSrc]="'assets/images/value-mutual-aid.jpg'">
+  </app-value-card>
+  <app-value-card
+    [title]="'Sourire !'"
+    [subtitle]="'Des courses…mais aussi des apéros organisés par l’association !'"
+    [imageSrc]="'assets/images/value-smile.jpg'">
+  </app-value-card>
+  <app-value-card
+    [title]="'Solidarité !'"
+    [subtitle]="'2€ sur l’adhésion annuelle sont reversés à une association caritative.'"
+    [imageSrc]="'assets/images/value-solidarity.jpg'">
+  </app-value-card>
+</div>
+
+<div class="calendar-container">
+  <h2>{{ calendarTitle }}</h2>
+  <app-calendar></app-calendar>
+</div>

@@ -1,0 +1,44 @@
+<mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+<!-- Etape 1: Choisissez une date -->
+  <mat-step label="Etape 1: Choisissez une date">
+    <div *ngIf="stepper.selectedIndex === 0">
+      <mat-card class="demo-inline-calendar-card">
+        <mat-calendar [(selected)]="selectedDate"></mat-calendar>
+      </mat-card>
+      <p>Date de cours choisie: {{ selectedDate ? formatDateToFrench(selectedDate) : '' }}</p>
+      <button mat-raised-button (click)="stepper.next()">Suivant</button>
+    </div>
+  </mat-step>
+
+  <!-- Etape 2: Choisissez un horaire -->
+  <mat-step label="Etape 2: Choisissez un horaire">
+    <div *ngIf="stepper.selectedIndex === 1">
+      <p>Choisissez un horaire:</p>
+      <span *ngFor="let hour of courseExemple.available_hours">
+        <button class="hour-selection-btn-hour-step" mat-raised-button (click)="selectedHour = hour">{{ hour }}</button>
+      </span>
+      <p>Heure choisie: {{ selectedHour }}</p>
+      <button mat-raised-button (click)="stepper.next()">Suivant</button>
+    </div>
+  </mat-step>
+
+  <!-- Etape 3: Aperçu de la course -->
+  <mat-step label="Etape 3: Aperçu de la course">
+    <div *ngIf="stepper.selectedIndex === 2">
+      <p>Aperçu de la course:</p>
+      <app-group-card [course]="courseExemple"></app-group-card> <!-- Passer l'objet courseExemple à GroupCardComponent -->
+      <button id="confirm-btn-group-step" mat-raised-button (click)="stepper.next()">Confirmer</button>
+    </div>
+  </mat-step>
+
+  <!-- Etape 4: Confirmation de la réservation -->
+  <mat-step label="Etape 4: Confirmation de la réservation">
+    <div *ngIf="stepper.selectedIndex === 3">
+      <p>Confirmation de la réservation</p>
+      <p>Titre: {{ courseExemple.title }}</p>
+      <p>Date: {{ formatDateToFrench(courseExemple.date) }}</p>
+      <p>Heure: {{ selectedHour }}</p>
+      <button mat-raised-button (click)="reserveCourse()">Réserver</button>
+    </div>
+  </mat-step>
+</mat-stepper>

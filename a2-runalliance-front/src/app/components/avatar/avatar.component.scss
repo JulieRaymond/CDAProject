@@ -1,0 +1,44 @@
+/* avatar.component.scss */
+@import "../../assets/variables";
+
+.avatar-container .card {
+  border: none; /* Supprime la bordure */
+  box-shadow: none; /* Supprime l'ombre pour une apparence plate */
+}
+
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 20px;
+  @include responsive-container(5rem, 7rem, 10rem);
+  margin-bottom: 2rem;
+  text-align: left;
+  border-radius: 8px;
+  background-color: $color-white;
+}
+
+.card-title {
+  @include responsive-font(2rem, 2.5rem, 3rem);
+  margin-bottom: 2rem;
+}
+
+.card-subtitle {
+  @include responsive-font(1.8rem, 2.3rem, 2.7rem);
+  color: $primary-color;
+  font-weight: bold;
+}
+
+.avatar {
+  width: 10rem; /* Taille de l'avatar */
+  height: 10rem;
+  border-radius: 50%; /* Pour arrondir l'avatar */
+}

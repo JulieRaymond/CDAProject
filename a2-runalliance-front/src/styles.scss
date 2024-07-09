@@ -1,0 +1,69 @@
+@use 'app/assets/variables' as *;
+
+// Styles globaux
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  flex: 1;
+
+  h1 {
+    @include responsive-font(2rem, 3rem, 4rem);
+  }
+
+  h2 {
+    @include responsive-font(1.6rem, 2.6rem, 3.6rem);
+  }
+
+  h3 {
+    @include responsive-font(1.2rem, 1.5rem, 1.6rem);
+  }
+
+  p {
+    @include responsive-font(1rem, 1.2rem, 1.5rem);
+  }
+}
+
+footer {
+  position: relative;
+}
+
+// Styles spécifiques à Angular Material
+.mat-typography p {
+  margin: 1rem;
+}
+
+html,
+.mat-primary {
+  // Datepicker
+  --mat-datepicker-calendar-date-today-outline-color: #6E191A;
+  --mat-datepicker-calendar-date-selected-state-background-color: #38522F;
+  --mat-stepper-header-icon-foreground-color: #fdfbff;
+  --mat-stepper-header-selected-state-icon-background-color: #6E191A;
+  --mat-stepper-header-selected-state-icon-foreground-color: #ffffff;
+  --mat-stepper-header-edit-state-icon-background-color: #38522F;
+  --mat-stepper-header-edit-state-icon-foreground-color: #ffffff;
+  --mat-stepper-container-color: #fdfbff;
+  --mat-stepper-line-color: #c4c6d0;
+  --mat-stepper-header-hover-state-layer-color: #FEF5E7;
+  --mat-stepper-header-focus-state-layer-color: #FEF5E7;
+
+  // Tab
+  --mdc-tab-indicator-active-indicator-color: #38522F;
+  --mat-tab-header-label-text-size: 1rem;
+  --mdc-tab-indicator-active-indicator-height: 6px;
+  --mat-tab-header-divider-color: #ffffff;
+  --mat-tab-header-inactive-label-text-color: #808080FF;
+  --mat-tab-header-active-label-text-color: #38522F;
+  --mat-tab-header-active-ripple-color: #ffb100;
+  --mat-tab-header-inactive-ripple-color: #1a1b1f;
+  --mat-tab-header-inactive-focus-label-text-color: #1a1b1f;
+  --mat-tab-header-inactive-hover-label-text-color: #6E191A;
+  --mat-tab-header-active-focus-label-text-color: #38522F;
+  --mat-tab-header-active-hover-label-text-color: #6E191A;
+  --mat-tab-header-active-focus-indicator-color: #38522F;
+  --mat-tab-header-active-hover-indicator-color: #6E191A;
+}

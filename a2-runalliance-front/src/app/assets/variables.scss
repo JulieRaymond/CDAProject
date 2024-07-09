@@ -1,0 +1,149 @@
+// Breakpoints
+$breakpoint-xs: 599px;
+$breakpoint-sm: 600px;
+$breakpoint-md: 960px;
+$breakpoint-lg: 1280px;
+$breakpoint-xl: 1920px;
+
+// Variables de couleurs
+$primary-color: #38522F;
+$secondary-color: #6E191A;
+$tertiary-color: #FEF5E7;
+$forth-color: #ffb100;
+$color-white: white;
+$color-black: black;
+$color-grey: grey;
+$color-white-transparent: rgba(255, 255, 255, 0.7);
+$color-orange: #FFC2AF;
+$color-yellow: #FFE9AF;
+$color-pink: #F3DFFF;
+$color-blue: #C8E1FF;
+$color-green: #E7FFD9;
+$color-red: #D16C6C;
+
+// Fonts
+$font-size-base: 1rem;
+
+// Mixins de responsivité
+@mixin responsive-font($min-size, $moy-size, $max-size) {
+  font-size: $min-size;
+  line-height: 1.5;
+
+  @media (min-width: $breakpoint-sm) {
+    font-size: $moy-size;
+  }
+  @media (min-width: $breakpoint-md) {
+    font-size: $max-size;
+  }
+}
+
+@mixin responsive-container($min-margin, $moy-margin, $max-margin) {
+  margin-left: $min-margin;
+  margin-right: $min-margin;
+
+  @media (min-width: $breakpoint-sm) {
+    margin-left: $moy-margin;
+    margin-right: $moy-margin;
+  }
+  @media (min-width: $breakpoint-md) {
+    margin-left: $max-margin;
+    margin-right: $max-margin;
+  }
+}
+
+@mixin responsive-container-full($min-margin, $moy-margin, $max-margin) {
+  margin: $min-margin;
+
+  @media (min-width: $breakpoint-sm) {
+    margin: $moy-margin;
+  }
+  @media (min-width: $breakpoint-md) {
+    margin: $max-margin;
+  }
+}
+
+@mixin responsive-card($min-margin, $moy-margin, $max-margin) {
+  margin: 2rem $min-margin;
+
+  @media (min-width: $breakpoint-sm) {
+    margin: 2rem $moy-margin;
+  }
+  @media (min-width: $breakpoint-md) {
+    margin: 2rem $max-margin;
+  }
+}
+
+@mixin reponsive-calendar($min-width, $moy-width, $max-width) {
+  width: $min-width;
+
+  @media (min-width: $breakpoint-sm) {
+    width: $moy-width;
+  }
+  @media (min-width: $breakpoint-md) {
+    width: $max-width;
+  }
+}
+
+// SCSS Mixin pour l'effet de sur-ligne animée "Overline From Center"
+@mixin overline-from-center {
+  $mediumDuration: 0.3s;
+  $duration: $mediumDuration;
+
+  position: relative;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 51%;
+    right: 51%;
+    bottom: 0;
+    background: $primary-color;
+    height: 4px;
+    transition-property: left, right;
+    transition-duration: $duration;
+    transition-timing-function: ease-out;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    &:before {
+      left: 0;
+      right: 0;
+    }
+  }
+}
+
+@mixin sweep-to-right {
+  $mediumDuration: 0.3s;
+  $duration: $mediumDuration;
+
+  position: relative;
+  transition: color $mediumDuration;
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $tertiary-color;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform $mediumDuration ease-out;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: white;
+
+    &:before {
+      transform: scaleX(1);
+    }
+  }
+}

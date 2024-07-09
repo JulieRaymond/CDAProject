@@ -1,0 +1,14 @@
+@import "../../assets/variables";
+
+.run-card-toCome-container,
+.run-card-done-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  app-run-card {
+    margin: 10px;
+
+    @include responsive-font(1rem, 1.2rem, 1.5rem);
+  }
+}

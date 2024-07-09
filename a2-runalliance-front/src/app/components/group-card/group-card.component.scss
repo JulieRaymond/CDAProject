@@ -1,0 +1,59 @@
+@import "../../assets/variables";
+
+.group-card {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 50px;
+}
+
+.group-orange {
+  background-color: $color-orange;
+}
+
+.group-yellow {
+  background-color: $color-yellow;
+}
+
+.group-pink {
+  background-color: $color-pink;
+}
+
+.group-blue {
+  background-color: $color-blue;
+}
+
+.group-green {
+  background-color: $color-green;
+}
+
+.group-red {
+  background-color: $color-red;
+}
+
+.group-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.group-icon {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.group-info {
+  flex-grow: 1;
+}
+
+.group-name {
+  font-weight: bold;
+}
+
+.group-kilometer {
+  color: #757575;
+}
+
+.group-speed-range {
+  font-weight: bold;
+}

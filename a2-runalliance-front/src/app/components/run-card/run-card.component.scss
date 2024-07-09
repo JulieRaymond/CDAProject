@@ -1,0 +1,12 @@
+/* run-card.component.scss */
+@import "../../assets/variables";
+
+.run-card {
+  width: 300px;
+  margin-top: 1rem;
+}
+
+.img {
+  width: fit-content;
+  height: auto;
+}

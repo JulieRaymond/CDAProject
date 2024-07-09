@@ -1,0 +1,120 @@
+@import "../../assets/variables";
+
+:host ::ng-deep .mat-icon {
+  width: unset;
+  height: unset;
+}
+
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  @include responsive-container-full(1rem, 4rem, 7rem);
+
+  .grid-item {
+    width: calc(33.33% - 0.67rem);
+    position: relative;
+    overflow: hidden;
+    animation: slide-in 0.5s ease forwards; /* Animation d'entrée pour chaque bloc */
+    opacity: 0; /* Initialisation de l'opacité pour l'animation */
+
+    .stat-card, .stat-card-long {
+      background-color: $tertiary-color;
+      border-radius: 10px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.3s ease;
+      height: 100%;
+
+      .icon-wrapper {
+        background-color: $primary-color;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.5rem;
+
+        mat-icon {
+          font-size: 36px;
+          color: $color-white;
+          transition: transform 0.3s ease;
+        }
+
+        .mat-icon:hover {
+          transform: rotate(360deg);
+        }
+      }
+
+      .stat-value {
+        font-weight: bold;
+        color: $primary-color;
+        font-size: $font-size-base;
+        @include responsive-font(14px, 24px, 48px);
+      }
+
+      .stat-title {
+        font-weight: bold;
+        color: $primary-color;
+        margin-top: 0.5rem;
+        font-size: $font-size-base;
+        @include responsive-font(16px, 26px, 50px);
+      }
+
+      .stat-label {
+        color: $primary-color;
+        font-size: $font-size-base;
+        @include responsive-font(14px, 24px, 48px);
+      }
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+
+      .icon-wrapper {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
+
+  // Animation pour chaque bloc
+  @for $i from 1 through 6 {
+    $side: if($i % 2 == 1, left, right); // Déterminer le côté gauche ou droit
+    .grid-item:nth-child(#{$i}) {
+      animation: slide-in-#{$side} 1.5s ease #{$i * 0.1}s forwards;
+    }
+  }
+
+  @keyframes slide-in-left {
+    0% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-in-right {
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  // Classes pour spanner plusieurs colonnes
+  .grid-item-span-2 {
+    width: calc(66.66% - 0.67rem); // Largeur pour 2 colonnes
+  }
+}

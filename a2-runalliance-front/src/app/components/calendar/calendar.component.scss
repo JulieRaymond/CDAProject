@@ -1,0 +1,15 @@
+@import "../../assets/variables";
+
+.demo-inline-calendar-card {
+  @include reponsive-calendar(100%, 70%, 33%);
+  margin: 0 auto;
+}
+
+.mat-mdc-raised-button:not(:disabled){
+  --mdc-protected-button-container-color: #6E191A;
+  --mdc-protected-button-label-text-color: #ffffff;
+}
+
+#confirm-btn-group-step{
+  margin-top: 2rem;
+}
