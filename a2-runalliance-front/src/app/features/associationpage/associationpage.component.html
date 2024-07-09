@@ -1,0 +1,19 @@
+<!--association.component.html-->
+<div class="association-image-container">
+  <img [src]="associationPathImage" alt="Group of runners for the association image" class="association-image">
+  <h1>{{ associationTitle }}</h1>
+  <div class="introduction-text">
+    <p>{{ introductionText }}</p>
+  </div>
+</div>
+<div class="association-container">
+  <h1>Les professeurs</h1>
+  <div class="teacher-list">
+    <app-teacher-card
+      *ngFor="let teacher of teachers"
+      [name]="teacher.name"
+      [bio]="teacher.bio"
+      [avatarUrl]="teacher.avatarUrl">
+    </app-teacher-card>
+  </div>
+</div>

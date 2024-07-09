@@ -1,0 +1,11 @@
+@import "../../../assets/styles/variables";
+
+.association-container {
+  padding: 20px;
+}
+
+.teacher-container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
