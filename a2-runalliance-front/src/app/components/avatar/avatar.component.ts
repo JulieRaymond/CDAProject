@@ -23,8 +23,8 @@ export interface User {
 })
 export class AvatarComponent {
   user: User = {
-    name: 'Jeanne'
+    name: 'Olayemi'
   };
 
-  avatarImagePath = "/assets/images/avatar.jpg";
+  avatarImagePath = "/assets/images/avatar2.png";
 }
