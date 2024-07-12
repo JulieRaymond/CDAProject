@@ -1,1 +1,28 @@
-<p>edit-profile works!</p>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <!-- Zone de dropzone pour l'image de profil -->
+  <div style="text-align: center;">
+    <dropzone [config]="config" (success)="onFileUpload($event)">
+      <div class="fallback">
+        <p>Drag and drop files here to upload.</p>
+      </div>
+    </dropzone>
+  </div>
+
+  <!-- Switch pour contrôler la visibilité du profil -->
+  <div>
+    <label>Visibilité de votre profil : privé </label>
+    <mat-slide-toggle formControlName="isVisible"> ou public</mat-slide-toggle>
+  </div>
+
+  <!-- Champs du formulaire de profil -->
+  <div>
+    <label for="name">Nom d'utilisateur</label>
+    <input type="text" id="name" formControlName="name" placeholder="Nom d'utilisateur">
+  </div>
+  <div>
+    <label for="email">E-mail</label>
+    <input type="email" id="email" formControlName="email" placeholder="E-mail">
+  </div>
+
+  <button type="submit">Save</button>
+</form>
